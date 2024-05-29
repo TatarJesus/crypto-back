@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend:
+    container_name: crypto-back
+    image: crypto-back:latest
+    build:
+      context: ../../../Downloads
+      dockerfile: Dockerfile
+    networks:
+      - reverseproxy-nw
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+
+networks:
+  reverseproxy-nw:
+    external: true
